@@ -3,7 +3,8 @@ name: Update
 on:
   workflow_dispatch:
   schedule:
-    - cron: '15 */6 1-7,23-31 * *'
+    - cron: '15 * 1-7,23-31 * *'
+    - cron: '15 */6 8-22 * *'
 
 jobs:
   scheduled:
