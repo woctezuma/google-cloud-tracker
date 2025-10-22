@@ -32,4 +32,4 @@ def object_to_message(obj: list) -> str:
 
 def object_batch_to_message(objs: list) -> str:
     messages = [object_to_message(obj) for obj in objs]
-    return f"{LINE_SEP}{LINE_SEP}".join(messages)
+    return f"{LINE_SEP}".join(messages)
