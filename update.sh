@@ -1,5 +1,3 @@
-python prepare_webhooks.py
-
 python update.py
 
 git add data/crc32c.txt
