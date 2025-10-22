@@ -24,11 +24,14 @@ def load_objects(*, sort_by_date: bool = True) -> list:
     return objects
 
 
-def find_new_objects(objects: list, hashes: set[str]) -> (list, set[str]):
+def find_new_objects(
+    objects: list,
+    hashes: dict[str, None],
+) -> (list, dict[str, str | None]):
     new_objects = []
     for obj in objects:
         if obj[HASH_FIELD] not in hashes:
             new_objects.append(obj)
-            hashes.add(obj[HASH_FIELD])
+            hashes[obj[HASH_FIELD]] = obj[TIME_FIELD]
 
     return new_objects, hashes

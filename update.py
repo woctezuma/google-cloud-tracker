@@ -12,7 +12,7 @@ def check_for_updates(*, debug: bool = False) -> None:
     try:
         hashes = load_hashes()
     except FileNotFoundError:
-        hashes = set()
+        hashes = {}
 
     if debug:
         print("Saving objects to disk")
