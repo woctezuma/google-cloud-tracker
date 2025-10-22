@@ -13,7 +13,7 @@ SIZE_FIELD = "size"
 
 
 def concatenate_lines(lines: list[str]) -> str:
-    return ITEM_SEP + ITEM_SEP.join(lines) + LINE_SEP
+    return ITEM_SEP + ITEM_SEP.join(lines)
 
 
 def object_to_sentences(obj: list) -> list[str]:
