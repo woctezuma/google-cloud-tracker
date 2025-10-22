@@ -11,7 +11,7 @@ repos:
       --unsafe-fixes,
       --target-version, "py314",
       --select, "ALL",
-      --ignore, "CPY001,INP001,D,E501,T201,PLR0913"
+      --ignore, "D,T201"
       ]
     - id: ruff-format
 
