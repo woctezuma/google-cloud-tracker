@@ -36,7 +36,8 @@ def notify_discord_for_a_single_batch(objs: list) -> None:
 
 
 def notify_discord(new_objects: list) -> None:
-    num_batches = 1 + len(new_objects) // BATCH_SIZE
+    num_objects = len(new_objects)
+    num_batches = int(num_objects % BATCH_SIZE > 0) + num_objects // BATCH_SIZE
 
     for counter, objs in enumerate(chunks(new_objects, BATCH_SIZE), start=1):
         notify_discord_for_a_single_batch(objs)
