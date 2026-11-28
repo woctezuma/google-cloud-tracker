@@ -10,6 +10,7 @@ def to_hashes(objects: list) -> dict[str, str]:
 
 
 def save_raw_hashes(hashes: dict[str, str]) -> None:
+    Path(DATA_FOLDER).mkdir(parents=True, exist_ok=True)
     with Path(HASH_FNAME).open("w") as f:
         f.write(LINE_SEP.join(hashes.keys()))
 

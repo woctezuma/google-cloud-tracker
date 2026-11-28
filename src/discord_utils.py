@@ -16,7 +16,10 @@ def get_webhook_url(webhook_id: str) -> str:
     return f"{DISCORD_API_URL}{webhook_id}"
 
 
-def post_message_to_discord(message: str, webhook_id: str) -> requests.Response | None:
+def post_message_to_discord(
+    message: str,
+    webhook_id: str | None,
+) -> requests.Response | None:
     if webhook_id is None or not message:
         response = None
     else:
@@ -26,6 +29,7 @@ def post_message_to_discord(message: str, webhook_id: str) -> requests.Response 
             json=json_data,
             timeout=TIMEOUT_IN_SECONDS,
         )
+        response.raise_for_status()
 
     return response
 

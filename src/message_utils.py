@@ -16,7 +16,7 @@ def concatenate_lines(lines: list[str]) -> str:
     return ITEM_SEP + ITEM_SEP.join(lines)
 
 
-def object_to_sentences(obj: list) -> list[str]:
+def object_to_sentences(obj: dict[str, str]) -> list[str]:
     return [
         f"URL: {DISPLAY_URL}{obj[NAME_FIELD]}",
         f"Created at: {obj[TIME_FIELD][:DATE_LENGTH]}",
@@ -26,10 +26,10 @@ def object_to_sentences(obj: list) -> list[str]:
     ]
 
 
-def object_to_message(obj: list) -> str:
+def object_to_message(obj: dict[str, str]) -> str:
     return concatenate_lines(object_to_sentences(obj))
 
 
-def object_batch_to_message(objs: list) -> str:
+def object_batch_to_message(objs: list[dict[str, str]]) -> str:
     messages = [object_to_message(obj) for obj in objs]
     return f"{LINE_SEP}".join(messages)

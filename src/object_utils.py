@@ -12,6 +12,7 @@ def sort_objects(objects: list, sort_field: str = TIME_FIELD) -> list:
 
 
 def save_objects(objects: list) -> None:
+    Path(DATA_FOLDER).mkdir(parents=True, exist_ok=True)
     with Path(DATA_FNAME).open("w") as f:
         json.dump(objects, f, indent=INDENT_LENGTH)
 
@@ -27,7 +28,7 @@ def load_objects(*, sort_by_date: bool = True) -> list:
 def find_new_objects(
     objects: list,
     hashes: dict[str, None],
-) -> (list, dict[str, str | None]):
+) -> tuple[list, dict[str, None]]:
     new_objects = []
     for obj in objects:
         if obj[HASH_FIELD] not in hashes:
