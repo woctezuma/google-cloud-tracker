@@ -14,8 +14,9 @@ def get_url(token: str | None = None) -> str:
     return BASE_URL
 
 
-def fetch_page(token: str | None = None) -> (list, str):
+def fetch_page(token: str | None = None) -> tuple[list, str | None]:
     response = requests.get(url=get_url(token), timeout=TIMEOUT_IN_SECONDS)
+    response.raise_for_status()
     data = response.json()
     page_objects = data.get("items", [])
     token = data.get("nextPageToken")
